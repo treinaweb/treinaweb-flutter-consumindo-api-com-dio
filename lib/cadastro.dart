@@ -1,3 +1,4 @@
+import 'package:cadastro/home.dart';
 import 'package:flutter/material.dart';
 
 class CadastroView extends StatelessWidget {
@@ -7,7 +8,7 @@ class CadastroView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Cadastro'),
       ),
       body: Center(
         child: Column(
@@ -18,7 +19,14 @@ class CadastroView extends StatelessWidget {
               style: TextStyle(fontSize: 30),
             ),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (ctx) => const HomeView(),
+                  ),
+                  (route) => false,
+                );
+              },
               child: const Text('Acessar'),
             )
           ],

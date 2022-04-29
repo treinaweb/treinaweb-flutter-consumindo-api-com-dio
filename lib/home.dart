@@ -1,3 +1,4 @@
+import 'package:cadastro/cadastro.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -18,7 +19,13 @@ class HomeView extends StatelessWidget {
               style: TextStyle(fontSize: 30),
             ),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => const CadastroView(),
+                  ),
+                );
+              },
               child: const Text('Acessar'),
             )
           ],
