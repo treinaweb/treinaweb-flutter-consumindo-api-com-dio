@@ -1,5 +1,6 @@
 import 'package:cadastro/cadastro.dart';
 import 'package:cadastro/home.dart';
+import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,9 +18,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: (setting) {
+        if (setting.name == "/cadastro") {
+          final user = setting.arguments as User?;
+          return MaterialPageRoute(
+            builder: (ctx) => CadastroView(user: user),
+          );
+        }
+      },
       routes: {
         "/home": (ctx) => const HomeView(),
-        "/cadastro": (ctx) => CadastroView(),
       },
       initialRoute: "/home",
     );

@@ -1,3 +1,4 @@
+import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
 class CardName extends StatelessWidget {
@@ -36,7 +37,12 @@ class CardName extends StatelessWidget {
               ),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  "/cadastro",
+                  arguments: User(nome: name, idade: idade),
+                );
+              },
               icon: const Icon(Icons.edit),
             ),
           )
