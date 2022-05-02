@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         "/home": (ctx) => const HomeView(),
-        "/cadastro": (ctx) => const CadastroView(),
+        "/cadastro": (ctx) => CadastroView(),
       },
       initialRoute: "/home",
     );

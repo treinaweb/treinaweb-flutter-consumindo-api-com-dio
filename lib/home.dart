@@ -1,5 +1,6 @@
 import 'package:cadastro/cadastro.dart';
 import 'package:cadastro/components/card.dart';
+import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,6 +8,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listUser = ModalRoute.of(context)!.settings.arguments as List<User>?;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
@@ -19,12 +21,13 @@ class HomeView extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.70,
                 child: Column(
-                  children: [
-                    CardName(
-                      name: 'Ariel',
-                      idade: 25,
-                    ),
-                  ],
+                  children: listUser
+                          ?.map(
+                            (user) =>
+                                CardName(name: user.nome, idade: user.idade),
+                          )
+                          .toList() ??
+                      [],
                 ),
               ),
               OutlinedButton(

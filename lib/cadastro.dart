@@ -1,8 +1,12 @@
+import 'package:cadastro/controller.dart';
 import 'package:cadastro/home.dart';
 import 'package:flutter/material.dart';
 
 class CadastroView extends StatelessWidget {
-  const CadastroView({Key? key}) : super(key: key);
+  CadastroView({Key? key}) : super(key: key);
+  final controller = CadastroController();
+  final nameController = TextEditingController();
+  final idadeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +22,17 @@ class CadastroView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
-                  children: const [
+                  children: [
                     TextField(
-                      decoration: InputDecoration(
+                      controller: nameController,
+                      decoration: const InputDecoration(
                         label: Text('Nome'),
                       ),
                     ),
                     TextField(
-                      decoration: InputDecoration(
+                      keyboardType: TextInputType.number,
+                      controller: idadeController,
+                      decoration: const InputDecoration(
                         label: Text('Idade'),
                       ),
                     ),
@@ -37,12 +44,15 @@ class CadastroView extends StatelessWidget {
               ),
               OutlinedButton(
                 onPressed: () {
+                  final listUsers = controller.addUser(
+                      nome: nameController.text, idade: idadeController.text);
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     "/home",
                     (route) => false,
+                    arguments: listUsers,
                   );
                 },
-                child: const Text('Acessar'),
+                child: const Text('Cadastrar'),
               )
             ],
           ),
