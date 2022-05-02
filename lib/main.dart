@@ -1,3 +1,4 @@
+import 'package:cadastro/cadastro.dart';
 import 'package:cadastro/home.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomeView(),
+      routes: {
+        "/home": (ctx) => const HomeView(),
+        "/cadastro": (ctx) => const CadastroView(),
+      },
+      initialRoute: "/home",
     );
   }
 }

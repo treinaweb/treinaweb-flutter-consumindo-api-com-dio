@@ -11,25 +11,41 @@ class CadastroView extends StatelessWidget {
         title: const Text('Cadastro'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Cadastro',
-              style: TextStyle(fontSize: 30),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (ctx) => const HomeView(),
-                  ),
-                  (route) => false,
-                );
-              },
-              child: const Text('Acessar'),
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: const [
+                    TextField(
+                      decoration: InputDecoration(
+                        label: Text('Nome'),
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        label: Text('Idade'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    "/home",
+                    (route) => false,
+                  );
+                },
+                child: const Text('Acessar'),
+              )
+            ],
+          ),
         ),
       ),
     );
