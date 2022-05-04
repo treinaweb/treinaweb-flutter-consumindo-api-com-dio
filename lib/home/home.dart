@@ -1,4 +1,4 @@
-import 'package:cadastro/cadastro.dart';
+import 'package:cadastro/cadastro/cadastro.dart';
 import 'package:cadastro/components/card.dart';
 import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
