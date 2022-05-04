@@ -44,12 +44,7 @@ class CadastroView extends StatelessWidget {
               ),
               OutlinedButton(
                 onPressed: () {
-                  final listUsers = controller.addUser(context: context);
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    "/home",
-                    (route) => false,
-                    arguments: listUsers,
-                  );
+                  controller.addUser(context: context);
                 },
                 child: Visibility(
                   visible: user == null,

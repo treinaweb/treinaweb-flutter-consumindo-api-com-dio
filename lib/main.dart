@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         }
       },
       routes: {
-        "/home": (ctx) => const HomeView(),
+        "/home": (ctx) => HomeView(),
       },
       initialRoute: "/home",
     );
