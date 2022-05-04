@@ -31,7 +31,9 @@ class HomeView extends StatelessWidget {
                         children: listUser
                                 ?.map(
                                   (user) => CardName(
-                                      name: user.nome, idade: user.idade),
+                                      name: user.nome,
+                                      idade: user.idade,
+                                      userId: user.id!),
                                 )
                                 .toList() ??
                             [],

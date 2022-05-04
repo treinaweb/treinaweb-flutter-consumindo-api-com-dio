@@ -4,8 +4,8 @@ import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
 class CadastroView extends StatelessWidget {
-  CadastroView({Key? key, required this.user}) : super(key: key);
-  final User? user;
+  CadastroView({Key? key, required this.userId}) : super(key: key);
+  final String? userId;
   final controller = CadastroController();
 
   @override
@@ -13,6 +13,24 @@ class CadastroView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cadastro'),
+        actions: [
+          FutureBuilder<User>(
+            future: controller.getUser(userId),
+            builder: (ctx, snapshot) {
+              if (snapshot.hasData) {
+                final user = snapshot.data!;
+                if (user.id != null) {
+                  return const Icon(Icons.edit);
+                }
+                return const Icon(Icons.person);
+              } else if (snapshot.hasError) {
+                return const Icon(Icons.error);
+              } else {
+                return const Text("Carregando...");
+              }
+            },
+          )
+        ],
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -47,7 +65,7 @@ class CadastroView extends StatelessWidget {
                   controller.addUser(context: context);
                 },
                 child: Visibility(
-                  visible: user == null,
+                  visible: userId == null,
                   child: const Text('Cadastrar'),
                   replacement: const Text("Editar"),
                 ),
