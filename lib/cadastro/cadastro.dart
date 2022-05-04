@@ -61,8 +61,15 @@ class CadastroView extends StatelessWidget {
                 height: 10,
               ),
               OutlinedButton(
-                onPressed: () {
-                  controller.addUser(context: context);
+                onPressed: () async {
+                  if (userId == null) {
+                    await controller.addUser(context: context);
+                  }
+
+                  if (userId != null) {
+                    await controller.editUser(
+                        context: context, userId: userId!);
+                  }
                 },
                 child: Visibility(
                   visible: userId == null,
