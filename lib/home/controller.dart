@@ -16,4 +16,11 @@ class HomeController {
       return null;
     }
   }
+
+  Future<void> deleteUser(String userId) async {
+    await _apiService.dio.delete(
+      "/user",
+      queryParameters: {"id": userId},
+    );
+  }
 }

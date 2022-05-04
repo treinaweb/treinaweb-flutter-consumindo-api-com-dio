@@ -4,9 +4,14 @@ import 'package:cadastro/home/controller.dart';
 import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   final controller = HomeController();
 
   @override
@@ -31,9 +36,14 @@ class HomeView extends StatelessWidget {
                         children: listUser
                                 ?.map(
                                   (user) => CardName(
-                                      name: user.nome,
-                                      idade: user.idade,
-                                      userId: user.id!),
+                                    name: user.nome,
+                                    idade: user.idade,
+                                    userId: user.id!,
+                                    onDelete: () async {
+                                      await controller.deleteUser(user.id!);
+                                      setState(() {});
+                                    },
+                                  ),
                                 )
                                 .toList() ??
                             [],

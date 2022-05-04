@@ -5,8 +5,13 @@ class CardName extends StatelessWidget {
   final String name;
   final int idade;
   final String userId;
+  final void Function()? onDelete;
   const CardName(
-      {Key? key, required this.name, required this.idade, required this.userId})
+      {Key? key,
+      required this.name,
+      required this.idade,
+      required this.userId,
+      required this.onDelete})
       : super(key: key);
 
   @override
@@ -38,14 +43,22 @@ class CardName extends StatelessWidget {
                 topRight: Radius.circular(10),
               ),
             ),
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  "/cadastro",
-                  arguments: User(nome: name, idade: idade, id: userId),
-                );
-              },
-              icon: const Icon(Icons.edit),
+            child: Column(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      "/cadastro",
+                      arguments: User(nome: name, idade: idade, id: userId),
+                    );
+                  },
+                  icon: const Icon(Icons.edit),
+                ),
+                IconButton(
+                  onPressed: onDelete,
+                  icon: const Icon(Icons.delete),
+                ),
+              ],
             ),
           )
         ],
