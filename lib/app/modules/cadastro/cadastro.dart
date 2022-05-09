@@ -1,5 +1,4 @@
-import 'package:cadastro/cadastro/controller.dart';
-import 'package:cadastro/home/home.dart';
+import 'package:cadastro/app/modules/cadastro/controller.dart';
 import 'package:cadastro/userMode.dart';
 import 'package:flutter/material.dart';
 
